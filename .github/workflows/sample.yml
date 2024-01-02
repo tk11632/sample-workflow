@@ -1,29 +1,15 @@
-name: shell commands
+name: Action Workflow
 
-on:
-  push:
-    branches:
-      - main  # Adjust this according to your branch name
+on: [push]
 
 jobs:
-  run-shell-commands:
+  run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: string
-        run: echo "Welcome to Devopshint!!"
-      - name: multiline script
-        run: |
-          node -v
-          npm -v
-      - name: python command
-        run: python -c "import platform; print(platform.processor())"
-
-  run-windows-command:
-    runs-on: windows-latest
-    steps:
-      - name: Directort Powershell
-        run: Get-Location
-      - name: Directort Bash
-        run: pwd
-        shell: bash
-
+      - name: Simple Javascript Action
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: devopshint
+      
+      - name: Get the output time
+        run: echo "${{steps.hellp.outputs.time}}"
