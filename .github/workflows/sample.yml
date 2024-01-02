@@ -18,5 +18,12 @@ jobs:
       - name: python command
         run: python -c "import platform; print(platform.processor())"
 
-
+  run-windows-command:
+    runs-on: windows-latest
+    steps:
+      - name: Directort Powershell
+        run: Get-Location
+      - name: Directort Bash
+        run: pwd
+        shell: bash
 
